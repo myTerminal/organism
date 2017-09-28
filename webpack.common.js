@@ -64,7 +64,7 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         presets: [
-                            'babel-preset-es2015'
+                            'babel-preset-env'
                         ]
                     }
                 }
@@ -76,7 +76,7 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         presets: [
-                            'babel-preset-es2015',
+                            'babel-preset-env',
                             'babel-preset-react'
                         ]
                     }
