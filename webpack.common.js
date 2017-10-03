@@ -31,13 +31,25 @@ module.exports = {
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
                 use: [
-                    'file-loader?name=fonts/[name].[ext]'
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'fonts/[name].[ext]',
+                            publicPath: '../'
+                        }
+                    }
                 ]
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
                 use: [
-                    'file-loader?name=images/[name].[ext]'
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'images/[name].[ext]',
+                            publicPath: '../'
+                        }
+                    }
                 ]
             },
             {
