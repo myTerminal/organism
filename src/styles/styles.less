@@ -25,6 +25,44 @@ html {
         #page {
             width: 100%;
             height: 100%;
+
+            .container {
+                width: 100%;
+                height: 100%;
+
+                .input {
+                    float: left;
+                    display: inline-block;
+                    width: 50%;
+                    height: 100%;
+                    border: none;
+                    margin: 0;
+                    padding: 0;
+                    .transition(2s);
+                }
+
+                .output {
+                    float: left;
+                    display: inline-block;
+                    width: 50%;
+                    height: 100%;
+                    background-color: #ccc;
+                    .transition(2s);
+                }
+
+                @media (orientation: portrait) {
+
+                    .input {
+                        width: 100%;
+                        height: 50%;
+                    }
+
+                    .output {
+                        width: 100%;
+                        height: 500%;
+                    }
+                }
+            }
         }
     }
 }
