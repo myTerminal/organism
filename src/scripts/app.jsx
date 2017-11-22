@@ -4,9 +4,11 @@ import '../styles/styles.less';
 
 const React = require('react');
 const ReactDOM = require('react-dom');
+
 const org = require('org');
 const markdown = require('markdown').markdown;
 const rst2mdown = require('rst2mdown');
+const textilejs = require('textile-js');
 
 const page = document.getElementById('page');
 
@@ -30,6 +32,9 @@ class App extends React.Component {
             },
             'ReStructuredText': function (text) {
                 return markdown.toHTML(rst2mdown(text));
+            },
+            'TxStyle': function (text) {
+                return textilejs(text);
             }
         };
 
