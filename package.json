@@ -25,6 +25,7 @@
   "author": "Mohammed Ismail Ansari <team.terminal@gmail.com>",
   "license": "GPL-3.0",
   "dependencies": {
+    "asciidoctor.js": "1.5.6-preview.4",
     "markdown": "0.5.0",
     "org": "0.2.0",
     "react": "15.6.2",

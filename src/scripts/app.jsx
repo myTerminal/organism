@@ -9,6 +9,7 @@ const org = require('org');
 const markdown = require('markdown').markdown;
 const rst2mdown = require('rst2mdown');
 const textilejs = require('textile-js');
+// const asciidoctor = require('asciidoctor.js')();
 
 const page = document.getElementById('page');
 
@@ -35,7 +36,10 @@ class App extends React.Component {
             },
             'TxStyle': function (text) {
                 return textilejs(text);
-            }
+            },
+            // 'AsciiDoc': function (text) {
+            //     return asciidoctor.convert(text);
+            // }
         };
 
         this.orgParser = new org.Parser();
