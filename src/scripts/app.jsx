@@ -11,6 +11,8 @@ const rst2mdown = require('rst2mdown');
 const textilejs = require('textile-js');
 // const asciidoctor = require('asciidoctor.js')();
 const creole = new (require('npm-creole'))();
+const BBCodeParser = require('bbcode-parser');
+const bbcodeParser = new BBCodeParser(BBCodeParser.defaultTags());
 
 const page = document.getElementById('page');
 
@@ -43,6 +45,9 @@ class App extends React.Component {
             // }
             'Creole': function (text) {
                 return creole.parse(text);
+            },
+            'BBCode': function (text) {
+                return bbcodeParser.parseString(text);
             }
         };
 
