@@ -6,6 +6,7 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const org = require('org');
 const markdown = require('markdown').markdown;
+const rst2mdown = require('rst2mdown');
 
 const page = document.getElementById('page');
 
@@ -26,6 +27,9 @@ class App extends React.Component {
             },
             'Markdown': function (text) {
                 return markdown.toHTML(text);
+            },
+            'ReStructuredText': function (text) {
+                return markdown.toHTML(rst2mdown(text));
             }
         };
 
