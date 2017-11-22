@@ -10,6 +10,7 @@ const markdown = require('markdown').markdown;
 const rst2mdown = require('rst2mdown');
 const textilejs = require('textile-js');
 // const asciidoctor = require('asciidoctor.js')();
+const creole = new (require('npm-creole'))();
 
 const page = document.getElementById('page');
 
@@ -40,6 +41,9 @@ class App extends React.Component {
             // 'AsciiDoc': function (text) {
             //     return asciidoctor.convert(text);
             // }
+            'Creole': function (text) {
+                return creole.parse(text);
+            }
         };
 
         this.orgParser = new org.Parser();
