@@ -10,3 +10,21 @@
 [![Gratipay](http://img.shields.io/gratipay/myTerminal.svg)](https://gratipay.com/myTerminal)  
 
 A live-preview editor for org and more
+
+You can try it online: [https://myTerminal.github.io/organism](https://myTerminal.github.io/organism)
+
+## Features
+
+* Live-preview
+* Simplistic interface, even works on mobile devices
+* Supports the following languages
+  * [org](http://orgmode.org/manual/Document-Structure.html)
+  * [Markdown](https://daringfireball.net/projects/markdown)
+  * [ReStructuredText](http://docutils.sourceforge.net/rst.html)
+  * [TxStyle](https://txstyle.org)
+  * [Creole](https://en.wikipedia.org/wiki/Creole_(markup))
+  * [BBCode](https://www.phpbb.com/community/help/bbcode)
+
+## To-do
+
+* Add support for more languages
