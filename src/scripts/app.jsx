@@ -14,6 +14,8 @@ const creole = new (require('npm-creole'))();
 const BBCodeParser = require('bbcode-parser');
 const bbcodeParser = new BBCodeParser(BBCodeParser.defaultTags());
 
+import samples from './samples.js';
+
 const page = document.getElementById('page');
 
 const defaultTranspiledText = 'Type text or paste a document on the left to view it in HTML form here';
@@ -54,8 +56,9 @@ class App extends React.Component {
         this.orgParser = new org.Parser();
 
         this.state = {
+            inputText: samples['Org'],
             selectedTransform: 'Org',
-            transpiledText: defaultTranspiledText
+            transpiledText: this.transforms['Org'].bind(this)(samples['Org'])
         };
     }
 
@@ -63,6 +66,7 @@ class App extends React.Component {
         var input = e.target.value;
 
         this.setState(() => ({
+            inputText: input,
             transpiledText: this.transforms[this.state.selectedTransform].bind(this)(input)
         }));
     }
@@ -71,15 +75,16 @@ class App extends React.Component {
         var selectedTransform = e.target.value;
 
         this.setState(() => ({
+            inputText: samples[selectedTransform],
             selectedTransform: selectedTransform,
-            transpiledText: defaultTranspiledText
+            transpiledText: this.transforms[selectedTransform].bind(this)(samples[selectedTransform])
         }));
     }
 
     render() {
         return (
             <div className="container">
-              <Input onChange={this.handleTextChange.bind(this)} />
+              <Input text={this.state.inputText} onChange={this.handleTextChange.bind(this)} />
               <Output text={this.state.transpiledText} />
               <Selector transforms={this.transforms} selectedTransform={this.state.selectedTransform} onChange={this.handleTransformChange.bind(this)} />
             </div>
@@ -89,7 +94,12 @@ class App extends React.Component {
 
 class Input extends React.Component {
     render() {
-        return <textarea className="input" onChange={this.props.onChange} />;
+        return (
+            <textarea className="input"
+                      value={this.props.text}
+                      onChange={this.props.onChange}
+                      />
+        );
     }
 }
 
@@ -98,7 +108,7 @@ class Output extends React.Component {
         return (
             <div
               className="output"
-              dangerouslySetInnerHTML={{ __html: this.props.text }}
+              dangerouslySetInnerHTML={{__html: this.props.text}}
               />
         );
     }
