@@ -6,7 +6,7 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 
 const org = require('org');
-const markdown = require('markdown').markdown;
+const markdown = new (require('showdown')).Converter();
 const rst2mdown = require('rst2mdown');
 const textilejs = require('textile-js');
 // const asciidoctor = require('asciidoctor.js')();
@@ -34,10 +34,10 @@ class App extends React.Component {
                     .toString();
             },
             'Markdown': function (text) {
-                return markdown.toHTML(text);
+                return markdown.makeHtml(text);
             },
             'ReStructuredText': function (text) {
-                return markdown.toHTML(rst2mdown(text));
+                return markdown.makeHtml(rst2mdown(text));
             },
             'TxStyle': function (text) {
                 return textilejs(text);

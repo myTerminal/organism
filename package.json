@@ -27,12 +27,12 @@
   "dependencies": {
     "asciidoctor.js": "1.5.6-preview.4",
     "bbcode-parser": "1.0.10",
-    "markdown": "0.5.0",
     "npm-creole": "0.3.6",
     "org": "0.2.0",
     "react": "15.6.2",
     "react-dom": "15.6.2",
     "rst2mdown": "0.1.0",
+    "showdown": "1.8.6",
     "textile-js": "2.0.4"
   },
   "devDependencies": {
