@@ -1,6 +1,8 @@
 # organism
 
+[![Build Status](https://travis-ci.org/myTerminal/organism.svg?branch=master)](https://travis-ci.org/myTerminal/organism)
 [![Code Climate](https://codeclimate.com/github/myTerminal/organism.png)](https://codeclimate.com/github/myTerminal/organism)
+[![Coverage Status](https://img.shields.io/coveralls/myTerminal/organism.svg)](https://coveralls.io/r/myTerminal/organism?branch=master)
 [![bitHound Overall Score](https://www.bithound.io/github/myTerminal/organism/badges/score.svg)](https://www.bithound.io/github/myTerminal/organism)
 [![bitHound Code](https://www.bithound.io/github/myTerminal/organism/badges/code.svg)](https://www.bithound.io/github/myTerminal/organism)  
 [![Dependency Status](https://david-dm.org/myTerminal/organism.svg)](https://david-dm.org/myTerminal/organism)
