@@ -1,13 +1,30 @@
 /* global require module */
 
+const sourceDir = 'src';
+
+const configs = require('./configs.json');
+
 const webpack = require('webpack');
 const WebpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common.js');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
+const copy = new CopyWebpackPlugin([
+    {
+        from: sourceDir + '/sw.js',
+        transform: function (content, path) {
+            return content.toString()
+                .replace(/#sw-cache-string#/g, (new Date().getTime()))
+                .replace(/#sw-origin#/g, configs.origin);
+        }
+    }
+]);
 
 module.exports = WebpackMerge(commonConfig, {
     mode: 'production',
     plugins: [
+        copy,
         new UglifyJSPlugin()
     ]
 });
