@@ -1,6 +1,6 @@
 /* global caches fetch skipWaiting */
 
-var cacheName = '1523061946974',
+var cacheName = '1523395096667',
     origin = '/organism/';
 
 this.addEventListener('install', function (event) {
@@ -49,4 +49,3 @@ this.addEventListener('message', messageEvent => {
         return null;
     }
 });
- 
