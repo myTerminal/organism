@@ -1,6 +1,6 @@
 /* global caches fetch skipWaiting */
 
-var cacheName = '1523395096667',
+var cacheName = '1523402833326',
     origin = '/organism/';
 
 this.addEventListener('install', function (event) {
@@ -23,7 +23,9 @@ this.addEventListener('install', function (event) {
 });
 
 this.addEventListener('fetch', function (event) {
-    event.respondWith(caches.match(event.request).then(function (response) {
+    var urlWithoutQueryParams = event.request.url.split('?')[0];
+
+    event.respondWith(caches.match(urlWithoutQueryParams).then(function (response) {
         if (response) {
             return response;
         }
