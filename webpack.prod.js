@@ -22,7 +22,7 @@ const copy = new CopyWebpackPlugin([
     }
 ]);
 const html = new HtmlWebpackPlugin({
-    template: 'index.html',
+    template: sourceDir + '/index.html',
     hash: true
 });
 

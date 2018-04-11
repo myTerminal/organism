@@ -19,7 +19,7 @@ const copy = new CopyWebpackPlugin([
 ]);
 const extractCSS = new ExtractTextPlugin('styles/styles.css');
 const html = new HtmlWebpackPlugin({
-    template: 'index.html'
+    template: sourceDir + '/index.html'
 });
 
 module.exports = {
