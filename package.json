@@ -1,7 +1,7 @@
 {
   "name": "organism",
   "version": "0.9.1",
-  "description": "",
+  "description": "A live-preview editor for org and more",
   "main": "public/index.html",
   "scripts": {
     "debug": "webpack --config webpack.dev.js",
@@ -11,12 +11,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:myTerminal/organism-webpack.git"
+    "url": "git@github.com:myTerminal/organism.git"
   },
   "bugs": {
-    "url": "https://github.com/myTerminal/organism-webpack/issues"
+    "url": "https://github.com/myTerminal/organism/issues"
   },
-  "homepage": "https://github.com/myTerminal/organism-webpack#readme",
+  "homepage": "https://github.com/myTerminal/organism#readme",
   "keywords": [
     "org",
     "markdown"
