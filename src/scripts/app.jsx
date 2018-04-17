@@ -15,6 +15,8 @@ const creole = new (require('npm-creole'))();
 const BBCodeParser = require('bbcode-parser');
 const bbcodeParser = new BBCodeParser(BBCodeParser.defaultTags());
 
+import packageDetails from '../../package.json';
+
 import samples from './samples.js';
 
 const page = document.getElementById('page');
@@ -84,10 +86,16 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className="container">
-              <Input text={this.state.inputText} onChange={this.handleTextChange.bind(this)} />
-              <Output text={this.state.transpiledText} />
-              <Selector transforms={this.transforms} selectedTransform={this.state.selectedTransform} onChange={this.handleTransformChange.bind(this)} />
+            <div className='root-container'>
+                <div className='header'>
+                    <b>organism</b> - A live-preview editor for org and more (v{packageDetails.version})
+                    <a className='source' href='https://github.com/myTerminal/organism' target='_blank'></a>
+                </div>
+                <div className="container">
+                    <Input text={this.state.inputText} onChange={this.handleTextChange.bind(this)} />
+                    <Output text={this.state.transpiledText} />
+                    <Selector transforms={this.transforms} selectedTransform={this.state.selectedTransform} onChange={this.handleTransformChange.bind(this)} />
+                </div>
             </div>
         );
     }
