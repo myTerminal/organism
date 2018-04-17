@@ -1,6 +1,6 @@
 /* global caches fetch skipWaiting */
 
-var cacheName = '1523458553581',
+var cacheName = '1523983218678',
     origin = '/organism/';
 
 this.addEventListener('install', function (event) {
