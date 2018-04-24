@@ -106,7 +106,7 @@ class App extends React.Component {
             <div className={'root-container layout-' + this.state.layout}>
                 <div className="header">
                     <b>organism</b>
-                    - A live-preview editor for org and more (v{packageDetails.version})
+                    &nbsp;- A live-preview editor for org and more (v{packageDetails.version})
                     <a className="source" href="https://github.com/myTerminal/organism" target="_blank">&nbsp;</a>
                 </div>
                 <div className="container">
