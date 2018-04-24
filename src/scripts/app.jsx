@@ -8,6 +8,10 @@ import './service-worker-starter.js';
 import packageDetails from '../../package.json';
 import samples from './samples.js';
 
+import Input from './components/input.jsx';
+import Output from './components/output.jsx';
+import Selector from './components/selector.jsx';
+
 const org = require('org');
 
 const showdown = require('showdown');
@@ -107,42 +111,6 @@ class App extends React.Component {
                         onChange={this.handleTransformChange.bind(this)} />
                 </div>
             </div>
-        );
-    }
-}
-
-class Input extends React.Component {
-    render() {
-        return (
-            <textarea className="input"
-                value={this.props.text}
-                onChange={this.props.onChange}
-            />
-        );
-    }
-}
-
-class Output extends React.Component {
-    render() {
-        return (
-            <div className="output"
-                dangerouslySetInnerHTML={{ __html: this.props.text }}
-            />
-        );
-    }
-}
-
-class Selector extends React.Component {
-    render() {
-        return (
-            <select className="transform-selector"
-                value={this.props.selectedTransform}
-                onChange={this.props.onChange}>
-                {
-                    Object.keys(this.props.transforms)
-                        .map(k => <option key={k} value={k}>{k}</option>)
-                }
-            </select>
         );
     }
 }
