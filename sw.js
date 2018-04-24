@@ -1,7 +1,7 @@
 /* global caches fetch skipWaiting */
 
-var cacheName = '1523983218678',
-    origin = '/organism/';
+var cacheName = '1524598232152',
+    origin = '/';
 
 this.addEventListener('install', function (event) {
     event.waitUntil(
@@ -39,6 +39,8 @@ this.addEventListener('activate', function (event) {
         caches.keys().then(keyList => Promise.all(keyList.map(key => {
             if (key !== cacheName) {
                 return caches.delete(key);
+            } else {
+                return null;
             }
         })))
     );
