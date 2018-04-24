@@ -70,7 +70,8 @@ class App extends React.Component {
         this.state = {
             inputText: samples.Org,
             selectedTransform: 'Org',
-            transpiledText: this.transforms.Org.bind(this)(samples.Org)
+            transpiledText: this.transforms.Org.bind(this)(samples.Org),
+            layout: 'both'
         };
     }
 
@@ -94,9 +95,15 @@ class App extends React.Component {
         }));
     }
 
+    switchToLayout(layoutCode) {
+        this.setState({
+            layout: layoutCode
+        });
+    }
+
     render() {
         return (
-            <div className="root-container">
+            <div className={'root-container layout-' + this.state.layout}>
                 <div className="header">
                     <b>organism</b>
                     - A live-preview editor for org and more (v{packageDetails.version})
@@ -109,6 +116,20 @@ class App extends React.Component {
                     <Selector transforms={this.transforms}
                         selectedTransform={this.state.selectedTransform}
                         onChange={this.handleTransformChange.bind(this)} />
+                </div>
+                <div className="footer">
+                    <div className={'control-button fa fa-columns fa-2x' + (this.state.layout === 'both' ? ' active' : '')}
+                        title="Markup and Preview"
+                        onClick={() => this.switchToLayout('both')}
+                    />
+                    <div className={'control-button fa fa-file-image-o fa-2x' + (this.state.layout === 'right' ? ' active' : '')}
+                        title="Preview only"
+                        onClick={() => this.switchToLayout('right')}
+                    />
+                    <div className={'control-button fa fa-file-code-o fa-2x' + (this.state.layout === 'left' ? ' active' : '')}
+                        title="Markup only"
+                        onClick={() => this.switchToLayout('left')}
+                    />
                 </div>
             </div>
         );

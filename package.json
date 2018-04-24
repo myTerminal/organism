@@ -1,6 +1,6 @@
 {
   "name": "organism",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "description": "A live-preview editor for org and more",
   "main": "public/index.html",
   "scripts": {
@@ -26,6 +26,7 @@
   "dependencies": {
     "asciidoctor.js": "1.5.6-preview.4",
     "bbcode-parser": "1.0.10",
+    "font-awesome": "4.7.0",
     "npm-creole": "0.3.6",
     "org": "0.2.0",
     "react": "15.6.2",
