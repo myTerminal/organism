@@ -107,7 +107,7 @@ class App extends React.Component {
                 <div className="header">
                     <b>organism</b>
                     &nbsp;- A live-preview editor for org and more (v{packageDetails.version})
-                    <a className="source" href="https://github.com/myTerminal/organism" target="_blank">&nbsp;</a>
+                    <a className="source fa fa-github fa-lg" href="https://github.com/myTerminal/organism" target="_blank">&nbsp;</a>
                 </div>
                 <div className="container">
                     <Input text={this.state.inputText}
