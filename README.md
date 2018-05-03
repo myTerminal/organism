@@ -16,6 +16,9 @@ You can try it online: [https://myTerminal.github.io/organism](https://myTermina
 
 * Live-preview
 * Simplistic interface, even works on mobile devices
+* Multiple layout options
+* Works offline
+* Export preview as an HTML file
 * Supports the following languages
   * [org](http://orgmode.org/manual/Document-Structure.html)
   * [Markdown](https://daringfireball.net/projects/markdown)

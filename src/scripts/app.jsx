@@ -1,7 +1,8 @@
-/* global require document */
+/* global require Blob document */
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import FileSaver from 'file-saver';
 
 import '../styles/styles.less';
 import './service-worker-starter.js';
@@ -101,6 +102,35 @@ class App extends React.Component {
         });
     }
 
+    exportHtml() {
+        var innerHtml = document.querySelector('.output').innerHTML,
+            title = innerHtml.match(/<h1(.*?)>(.*?)<\/h1>/g)[0] || '',
+            trimmedTitle = title.replace(/<h1(.*?)>/g, '').replace(/<\/h1>/g, ''),
+            appendedTitle = trimmedTitle ? trimmedTitle + ' - organism' : 'organism',
+            entireHtml = `<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+
+        <title>${appendedTitle}</title>
+    </head>
+    <body>
+        ${innerHtml}
+        <hr>
+        <p id="export-footer">
+            Created with
+            <a href="https://myTerminal.github.io/organism" target="_blank">
+                https://myTerminal.github.io/organism
+            </a>
+        </p>
+    </body>
+</html>`,
+            blob = new Blob([entireHtml], { type: 'text/html;charset=utf-8' });
+
+        FileSaver.saveAs(blob, `${trimmedTitle}.html`);
+    }
+
     render() {
         return (
             <div className={'root-container layout-' + this.state.layout}>
@@ -120,16 +150,17 @@ class App extends React.Component {
                 <div className="footer">
                     <div className={'control-button fa fa-columns fa-2x' + (this.state.layout === 'both' ? ' active' : '')}
                         title="Markup and Preview"
-                        onClick={() => this.switchToLayout('both')}
-                    />
+                        onClick={() => this.switchToLayout('both')} />
                     <div className={'control-button fa fa-file-image-o fa-2x' + (this.state.layout === 'right' ? ' active' : '')}
                         title="Preview only"
-                        onClick={() => this.switchToLayout('right')}
-                    />
+                        onClick={() => this.switchToLayout('right')} />
                     <div className={'control-button fa fa-file-code-o fa-2x' + (this.state.layout === 'left' ? ' active' : '')}
                         title="Markup only"
-                        onClick={() => this.switchToLayout('left')}
-                    />
+                        onClick={() => this.switchToLayout('left')} />
+                    <div className="control-separator" />
+                    <div className="control-button fa fa-hdd-o fa-2x"
+                        title="Export HTML"
+                        onClick={() => this.exportHtml()} />
                 </div>
             </div>
         );
