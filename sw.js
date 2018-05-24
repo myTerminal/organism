@@ -1,6 +1,6 @@
 /* global caches fetch skipWaiting */
 
-var cacheName = '1526267509121',
+var cacheName = '1527177137974',
     origin = '/organism/';
 
 this.addEventListener('install', function (event) {
@@ -13,7 +13,13 @@ this.addEventListener('install', function (event) {
                     origin + 'styles/styles.css',
                     origin + 'scripts/app.js',
                     origin + 'fonts/RobotoMono-Bold.ttf',
-                    origin + 'fonts/RobotoMono-Regular.ttf'
+                    origin + 'fonts/RobotoMono-Regular.ttf',
+                    origin + 'fonts/fontawesome-webfont.woff2',
+                    origin + 'icons/launcher-icon-1x.png',
+                    origin + 'icons/launcher-icon-2x.png',
+                    origin + 'icons/launcher-icon-4x.png',
+                    origin + 'manifest.json',
+                    origin + 'favicon.ico'
                 ]
             );
         }).catch(function (err) {
