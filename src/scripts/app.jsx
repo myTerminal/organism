@@ -41,29 +41,15 @@ class App extends React.Component {
             Org: function (text) {
                 return this.orgParser
                     .parse(text)
-                    .convert(org.ConverterHTML, {
-                        headerOffset: 0
-                    })
+                    .convert(org.ConverterHTML, { headerOffset: 0 })
                     .toString();
             },
-            Markdown: function (text) {
-                return markdown.makeHtml(text);
-            },
-            ReStructuredText: function (text) {
-                return markdown.makeHtml(rst2mdown(text));
-            },
-            TxStyle: function (text) {
-                return textilejs(text);
-            },
-            // AsciiDoc: function (text) {
-            //     return asciidoctor.convert(text);
-            // }
-            Creole: function (text) {
-                return creole.parse(text);
-            },
-            BBCode: function (text) {
-                return bbcodeParser.parseString(text);
-            }
+            Markdown: text => markdown.makeHtml(text),
+            ReStructuredText: text => markdown.makeHtml(rst2mdown(text)),
+            TxStyle: text => textilejs(text),
+            // AsciiDoc: text => asciidoctor.convert(text),
+            Creole: text => creole.parse(text),
+            BBCode: text => bbcodeParser.parseString(text)
         };
 
         this.orgParser = new org.Parser();
