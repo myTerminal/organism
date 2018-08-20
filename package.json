@@ -67,6 +67,8 @@
     "less": "3.0.1",
     "less-loader": "4.1.0",
     "mocha": "5.2.0",
+    "react-testing-library": "5.0.0",
+    "sinon": "6.1.5",
     "style-loader": "0.20.3",
     "uglifyjs-webpack-plugin": "1.2.4",
     "webpack": "4.1.1",
