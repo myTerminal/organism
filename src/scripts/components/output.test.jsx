@@ -5,8 +5,7 @@ import { cleanup, render } from 'react-testing-library';
 import sinon from 'sinon';
 import Output from './output.jsx';
 
-const should = require('chai').should(),
-    noOperation = function () {};
+const should = require('chai').should();
 
 describe('output', function () {
     afterEach(cleanup);
