@@ -9,7 +9,8 @@
     "live": "webpack-dev-server --config webpack.live.js --open",
     "build": "webpack --config webpack.prod.js",
     "karma": "karma",
-    "test": "karma start --single-run=true"
+    "test": "karma start --single-run=true",
+    "test-ui": "cypress open"
   },
   "repository": {
     "type": "git",
@@ -48,6 +49,7 @@
     "clean-webpack-plugin": "0.1.19",
     "copy-webpack-plugin": "4.5.1",
     "css-loader": "0.28.11",
+    "cypress": "3.1.0",
     "eslint": "4.19.1",
     "eslint-config-airbnb": "16.1.0",
     "eslint-loader": "2.0.0",
