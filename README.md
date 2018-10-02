@@ -30,3 +30,10 @@ You can try it online: [https://myTerminal.github.io/organism](https://myTermina
 ## To-do
 
 * Add support for more languages
+
+## Running tests
+
+Download or clone the project to your local system, run an `npm install` before you could run tests. At the root directory of the project,
+
+* For unit tests, run `npm test`
+* For functional tests, run `npm run test-ui`
