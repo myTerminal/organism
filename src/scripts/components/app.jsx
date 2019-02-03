@@ -61,9 +61,9 @@ export default class App extends React.Component {
     handleTextChange(e) {
         var input = e.target.value;
 
-        this.setState(() => ({
+        this.setState((previousState) => ({
             inputText: input,
-            transpiledText: this.transforms[this.state.selectedTransform].bind(this)(input)
+            transpiledText: this.transforms[previousState.selectedTransform].bind(this)(input)
         }));
     }
 
@@ -118,7 +118,9 @@ export default class App extends React.Component {
             <div className={'root-container layout-' + this.state.layout}>
                 <div className="header">
                     <b>organism</b>
-                    &nbsp;- A live-preview editor for org and more (v{packageDetails.version})
+                    &nbsp;- A live-preview editor for org and more (v
+                    {packageDetails.version}
+                    )
                     <a className="source fa fa-github fa-lg" href="https://github.com/myTerminal/organism" target="_blank">&nbsp;</a>
                 </div>
                 <div className="container">
