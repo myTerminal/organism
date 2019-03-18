@@ -1,6 +1,6 @@
 {
   "name": "organism",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "A live-preview editor for org and more",
   "main": "public/index.html",
   "scripts": {
@@ -27,7 +27,7 @@
   "author": "Mohammed Ismail Ansari <team.terminal@gmail.com>",
   "license": "GPL-3.0",
   "dependencies": {
-    "ample-alerts": "0.13.1",
+    "ample-alerts": "1.2.1",
     "asciidoctor.js": "1.5.9",
     "bbcode-parser": "1.0.10",
     "file-saver": "2.0.0",
