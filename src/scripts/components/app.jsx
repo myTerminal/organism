@@ -6,6 +6,7 @@ import FileSaver from 'file-saver';
 import Input from './input.jsx';
 import Output from './output.jsx';
 import Selector from './selector.jsx';
+import Footer from './footer.jsx';
 
 import packageDetails from '../../../package.json';
 
@@ -131,21 +132,11 @@ export default class App extends React.Component {
                         selectedTransform={this.state.selectedTransform}
                         onChange={this.handleTransformChange.bind(this)} />
                 </div>
-                <div className="footer">
-                    <div className={'control-button fa fa-columns fa-2x' + (this.state.layout === 'both' ? ' active' : '')}
-                        title="Markup and Preview"
-                        onClick={() => this.switchToLayout('both')} />
-                    <div className={'control-button fa fa-file-image-o fa-2x' + (this.state.layout === 'right' ? ' active' : '')}
-                        title="Preview only"
-                        onClick={() => this.switchToLayout('right')} />
-                    <div className={'control-button fa fa-file-code-o fa-2x' + (this.state.layout === 'left' ? ' active' : '')}
-                        title="Markup only"
-                        onClick={() => this.switchToLayout('left')} />
-                    <div className="control-separator" />
-                    <div className="control-button fa fa-hdd-o fa-2x"
-                        title="Export HTML"
-                        onClick={() => this.exportHtml()} />
-                </div>
+                <Footer
+                    layout={this.state.layout}
+                    switchToLayout={(l) => this.switchToLayout(l)}
+                    exportHtml={() => this.exportHtml()}
+                />
             </div>
         );
     }
