@@ -3,6 +3,7 @@
 import React from 'react';
 import { cleanup, render } from 'react-testing-library';
 import sinon from 'sinon';
+
 import Output from './output.jsx';
 
 const should = require('chai').should();

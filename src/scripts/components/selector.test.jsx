@@ -3,6 +3,7 @@
 import React from 'react';
 import { cleanup, render, fireEvent } from 'react-testing-library';
 import sinon from 'sinon';
+
 import Selector from './selector.jsx';
 
 const should = require('chai').should(),

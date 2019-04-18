@@ -3,10 +3,11 @@
 import React from 'react';
 import { cleanup, render, fireEvent } from 'react-testing-library';
 import sinon from 'sinon';
+
 import Footer from './footer.jsx';
 
 const should = require('chai').should(),
-      noOperation = function () {};
+    noOperation = function () {};
 
 describe('footer', function () {
     afterEach(cleanup);
@@ -20,6 +21,7 @@ describe('footer', function () {
 
     it('switches layouts according to selection', function () {
         const switchToLayout = sinon.fake();
+
         const { container } = render(<Footer layout="both" switchToLayout={switchToLayout} exportHtml={noOperation} />);
         const buttonForBoth = container.querySelector('.fa-columns');
         const buttonForPreview = container.querySelector('.fa-file-image-o');
@@ -40,6 +42,7 @@ describe('footer', function () {
 
     it('tries to export on user request', function () {
         const exportHtml = sinon.fake();
+
         const { container } = render(<Footer layout="both" switchToLayout={noOperation} exportHtml={exportHtml} />);
         const buttonToExport = container.querySelector('.fa-hdd-o');
 

@@ -3,7 +3,8 @@ import React from 'react';
 export default class Selector extends React.Component {
     render() {
         return (
-            <select className="transform-selector"
+            <select
+                className="transform-selector"
                 value={this.props.selectedTransform}
                 onChange={this.props.onChange}>
                 {

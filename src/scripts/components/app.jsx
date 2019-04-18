@@ -9,7 +9,6 @@ import Selector from './selector.jsx';
 import Footer from './footer.jsx';
 
 import packageDetails from '../../../package.json';
-
 import samples from '../samples.js';
 
 const org = require('org');
@@ -60,7 +59,7 @@ export default class App extends React.Component {
     }
 
     handleTextChange(e) {
-        var input = e.target.value;
+        const input = e.target.value;
 
         this.setState((previousState) => ({
             inputText: input,
@@ -69,7 +68,7 @@ export default class App extends React.Component {
     }
 
     handleTransformChange(e) {
-        var selectedTransform = e.target.value;
+        const selectedTransform = e.target.value;
 
         this.setState(() => ({
             inputText: samples[selectedTransform],
@@ -86,7 +85,7 @@ export default class App extends React.Component {
     }
 
     exportHtml() {
-        var innerHtml = document.querySelector('.output').innerHTML,
+        const innerHtml = document.querySelector('.output').innerHTML,
             title = innerHtml.match(/<h1(.*?)>(.*?)<\/h1>/g)[0] || '',
             trimmedTitle = title.replace(/<h1(.*?)>/g, '').replace(/<\/h1>/g, ''),
             appendedTitle = trimmedTitle ? trimmedTitle + ' - organism' : 'organism',
