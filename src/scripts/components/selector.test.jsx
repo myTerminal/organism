@@ -6,13 +6,13 @@ import sinon from 'sinon';
 
 import Selector from './selector.jsx';
 
-const should = require('chai').should(),
-    noOperation = function () {};
+const should = require('chai').should();
+const noOperation = () => {};
 
-describe('selector', function () {
+describe('selector', () => {
     afterEach(cleanup);
 
-    it('renders provided options', function () {
+    it('renders provided options', () => {
         const transforms = [
             {
                 name: 'first',
@@ -38,7 +38,7 @@ describe('selector', function () {
         select.options[2].value.should.equal('third');
     });
 
-    it('selects the default provided option at the start', function () {
+    it('selects the default provided option at the start', () => {
         const transforms = [
             {
                 name: 'first',
@@ -60,7 +60,7 @@ describe('selector', function () {
         select.value.should.equal('first');
     });
 
-    it('reports selection change', function () {
+    it('reports selection change', () => {
         const onSelectionChange = sinon.fake(),
             transforms = [
                 {

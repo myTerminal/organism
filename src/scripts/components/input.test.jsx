@@ -6,27 +6,27 @@ import sinon from 'sinon';
 
 import Input from './input.jsx';
 
-const should = require('chai').should(),
-    noOperation = function () {};
+const should = require('chai').should();
+const noOperation = () => {};
 
-describe('input', function () {
+describe('input', () => {
     afterEach(cleanup);
 
-    it('renders without problems with empty props', function () {
+    it('renders without problems with empty props', () => {
         const { container } = render(<Input text="" onChange={noOperation} />);
         const textArea = container.querySelector('textarea');
 
         should.exist(textArea);
     });
 
-    it('renders text received through props', function () {
+    it('renders text received through props', () => {
         const { container } = render(<Input text="Sample text" onChange={noOperation} />);
         const textArea = container.querySelector('textarea');
 
         textArea.innerHTML.should.equal('Sample text');
     });
 
-    it.skip('reports text change', function () {
+    it.skip('reports text change', () => {
         const onTextChange = sinon.fake(),
             eventData = {
                 target: {

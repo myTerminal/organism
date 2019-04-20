@@ -9,17 +9,17 @@ import Footer from './footer.jsx';
 const should = require('chai').should();
 const noOperation = () => {};
 
-describe('footer', function () {
+describe('footer', () => {
     afterEach(cleanup);
 
-    it('renders without problems with usual props', function () {
+    it('renders without problems with usual props', () => {
         const { container } = render(<Footer layout="both" switchToLayout={noOperation} exportHtml={noOperation} reset={noOperation} />);
         const footerDom = container.querySelector('.footer');
 
         should.exist(footerDom);
     });
 
-    it('switches layouts according to selection', function () {
+    it('switches layouts according to selection', () => {
         const switchToLayout = sinon.fake();
 
         const { container } = render(<Footer layout="both" switchToLayout={switchToLayout} exportHtml={noOperation} reset={noOperation} />);
@@ -40,7 +40,7 @@ describe('footer', function () {
         switchToLayout.calledWith('left').should.equal(true);
     });
 
-    it('tries to export on user request', function () {
+    it('tries to export on user request', () => {
         const exportHtml = sinon.fake();
 
         const { container } = render(<Footer layout="both" switchToLayout={noOperation} exportHtml={exportHtml} reset={noOperation} />);
@@ -50,7 +50,7 @@ describe('footer', function () {
         exportHtml.called.should.equal(true);
     });
 
-    it('tries to reset on user request', function () {
+    it('tries to reset on user request', () => {
         const reset = sinon.fake();
 
         const { container } = render(<Footer layout="both" switchToLayout={noOperation} exportHtml={noOperation} reset={reset} />);

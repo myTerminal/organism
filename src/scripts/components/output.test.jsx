@@ -8,7 +8,7 @@ import Output from './output.jsx';
 
 const should = require('chai').should();
 
-describe('output', function () {
+describe('output', () => {
     afterEach(cleanup);
 
     it('renders without problems with empty props', function () {
