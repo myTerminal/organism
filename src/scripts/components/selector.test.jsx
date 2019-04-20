@@ -13,11 +13,20 @@ describe('selector', function () {
     afterEach(cleanup);
 
     it('renders provided options', function () {
-        const transforms = {
-            first: 'first-one',
-            second: 'second-one',
-            third: 'third-one'
-        };
+        const transforms = [
+            {
+                name: 'first',
+                transformFunction: 'first-one'
+            },
+            {
+                name: 'second',
+                transformFunction: 'second-one'
+            },
+            {
+                name: 'third',
+                transformFunction: 'third-one'
+            }
+        ];
 
         const { container } = render(<Selector selectedTransform="first" onChange={noOperation} transforms={transforms} />);
         const select = container.querySelector('select');
@@ -30,11 +39,20 @@ describe('selector', function () {
     });
 
     it('selects the default provided option at the start', function () {
-        const transforms = {
-            first: 'first-one',
-            second: 'second-one',
-            third: 'third-one'
-        };
+        const transforms = [
+            {
+                name: 'first',
+                transformFunction: 'first-one'
+            },
+            {
+                name: 'second',
+                transformFunction: 'second-one'
+            },
+            {
+                name: 'third',
+                transformFunction: 'third-one'
+            }
+        ];
 
         const { container } = render(<Selector selectedTransform="first" onChange={noOperation} transforms={transforms} />);
         const select = container.querySelector('select');
@@ -44,11 +62,20 @@ describe('selector', function () {
 
     it('reports selection change', function () {
         const onSelectionChange = sinon.fake(),
-            transforms = {
-                first: 'first-one',
-                second: 'second-one',
-                third: 'third-one'
-            };
+            transforms = [
+                {
+                    name: 'first',
+                    transformFunction: 'first-one'
+                },
+                {
+                    name: 'second',
+                    transformFunction: 'second-one'
+                },
+                {
+                    name: 'third',
+                    transformFunction: 'third-one'
+                }
+            ];
 
         const { container } = render(<Selector selectedTransform="first" onChange={onSelectionChange} transforms={transforms} />);
         const select = container.querySelector('select');
