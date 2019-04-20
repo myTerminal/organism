@@ -1,6 +1,6 @@
 {
   "name": "organism",
-  "version": "0.10.1",
+  "version": "0.11.0",
   "description": "A live-preview editor for org and more",
   "main": "public/index.html",
   "scripts": {

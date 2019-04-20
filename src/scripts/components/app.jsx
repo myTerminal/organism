@@ -53,7 +53,6 @@ export default class App extends React.Component {
         this.state = {
             inputText: samples.Org,
             selectedTransform: 'Org',
-            transpiledText: this.transforms.Org.bind(this)(samples.Org),
             layout: 'both'
         };
     }
@@ -62,8 +61,7 @@ export default class App extends React.Component {
         const input = e.target.value;
 
         this.setState((previousState) => ({
-            inputText: input,
-            transpiledText: this.transforms[previousState.selectedTransform].bind(this)(input)
+            inputText: input
         }));
     }
 
@@ -72,9 +70,7 @@ export default class App extends React.Component {
 
         this.setState(() => ({
             inputText: samples[selectedTransform],
-            selectedTransform: selectedTransform,
-            transpiledText: this.transforms[selectedTransform]
-                .bind(this)(samples[selectedTransform])
+            selectedTransform: selectedTransform
         }));
     }
 
@@ -124,12 +120,21 @@ export default class App extends React.Component {
                     <a className="source fa fa-github fa-lg" href="https://github.com/myTerminal/organism" target="_blank">&nbsp;</a>
                 </div>
                 <div className="container">
-                    <Input text={this.state.inputText}
-                        onChange={this.handleTextChange.bind(this)} />
-                    <Output text={this.state.transpiledText} />
-                    <Selector transforms={this.transforms}
+                    <Input
+                        text={this.state.inputText}
+                        onChange={(e) => this.handleTextChange(e)}
+                    />
+                    <Output
+                        text={
+                            this.transforms[this.state.selectedTransform]
+                                .bind(this)(this.state.inputText)
+                        }
+                    />
+                    <Selector
+                        transforms={this.transforms}
                         selectedTransform={this.state.selectedTransform}
-                        onChange={this.handleTransformChange.bind(this)} />
+                        onChange={(t) => this.handleTransformChange(t)}
+                    />
                 </div>
                 <Footer
                     layout={this.state.layout}
