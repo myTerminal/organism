@@ -33,26 +33,47 @@ export default class App extends React.Component {
     constructor() {
         super();
 
-        this.transforms = {
-            Org: function (text) {
-                return this.orgParser
-                    .parse(text)
-                    .convert(org.ConverterHTML, { headerOffset: 0 })
-                    .toString();
+        this.transforms = [
+            {
+                name: 'Org',
+                transformFunction: function (text) {
+                    return this.orgParser
+                        .parse(text)
+                        .convert(org.ConverterHTML, { headerOffset: 0 })
+                        .toString();
+                }
             },
-            Markdown: text => markdown.makeHtml(text),
-            ReStructuredText: text => markdown.makeHtml(rst2mdown(text)),
-            TxStyle: text => textilejs(text),
-            // AsciiDoc: text => asciidoctor.convert(text),
-            Creole: text => creole.parse(text),
-            BBCode: text => bbcodeParser.parseString(text)
-        };
+            {
+                name: 'Markdown',
+                transformFunction: text => markdown.makeHtml(text)
+            },
+            {
+                name: 'ReStructuredText',
+                transformFunction: text => markdown.makeHtml(rst2mdown(text))
+            },
+            {
+                name: 'TxStyle',
+                transformFunction: text => textilejs(text)
+            },
+            // {
+            //     name: 'AsciiDoc',
+            //     transformFunction: text => asciidoctor.convert(text)
+            // },
+            {
+                name: 'Creole',
+                transformFunction: text => creole.parse(text)
+            },
+            {
+                name: 'BBCode',
+                transformFunction: text => bbcodeParser.parseString(text)
+            }
+        ];
 
         this.orgParser = new org.Parser();
 
         this.state = {
             inputText: samples.Org,
-            selectedTransform: 'Org',
+            selectedTransform: this.transforms[0],
             layout: 'both'
         };
     }
@@ -66,11 +87,11 @@ export default class App extends React.Component {
     }
 
     handleTransformChange(e) {
-        const selectedTransform = e.target.value;
+        const selectedTransformName = e.target.value;
 
         this.setState(() => ({
-            inputText: samples[selectedTransform],
-            selectedTransform: selectedTransform
+            inputText: samples[selectedTransformName],
+            selectedTransform: this.transforms.filter(t => t.name === selectedTransformName)[0]
         }));
     }
 
@@ -126,7 +147,7 @@ export default class App extends React.Component {
                     />
                     <Output
                         text={
-                            this.transforms[this.state.selectedTransform]
+                            this.state.selectedTransform.transformFunction
                                 .bind(this)(this.state.inputText)
                         }
                     />

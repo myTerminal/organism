@@ -5,11 +5,11 @@ export default class Selector extends React.Component {
         return (
             <select
                 className="transform-selector"
-                value={this.props.selectedTransform}
+                value={this.props.selectedTransform.name}
                 onChange={this.props.onChange}>
                 {
-                    Object.keys(this.props.transforms)
-                        .map(k => <option key={k} value={k}>{k}</option>)
+                    this.props.transforms
+                        .map(k => <option key={k.name} value={k.name}>{k.name}</option>)
                 }
             </select>
         );
