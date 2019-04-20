@@ -130,6 +130,12 @@ export default class App extends React.Component {
         FileSaver.saveAs(blob, `${trimmedTitle}.html`);
     }
 
+    reset() {
+        this.setState((state) => ({
+            inputText: samples[state.selectedTransform.name]
+        }));
+    }
+
     render() {
         return (
             <div className={'root-container layout-' + this.state.layout}>
@@ -161,6 +167,7 @@ export default class App extends React.Component {
                     layout={this.state.layout}
                     switchToLayout={(l) => this.switchToLayout(l)}
                     exportHtml={() => this.exportHtml()}
+                    reset={() => this.reset()}
                 />
             </div>
         );

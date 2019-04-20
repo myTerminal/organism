@@ -27,6 +27,11 @@ export default class Footer extends React.Component {
                     title="Export HTML"
                     onClick={() => this.props.exportHtml()}
                 />
+                <div
+                    className="control-button fa fa-refresh fa-2x"
+                    title="Reset"
+                    onClick={() => this.props.reset()}
+                />
             </div>
         );
     }
