@@ -88,19 +88,25 @@ export default class App extends React.Component {
         Promise
             .all(
                 [
-                    localforage.getItem('transform')
+                    localforage.getItem('inputText'),
+                    localforage.getItem('transform'),
+                    localforage.getItem('layout')
                 ]
             )
             .then(
                 (
                     [
-                        storedTransformName
+                        inputText,
+                        storedTransformName,
+                        layoutCode
                     ]
                 ) => {
-                    context.setState({
+                    context.setState(state => ({
+                        inputText: inputText || '',
                         selectedTransform: context.getTransformByName(storedTransformName)
-                                        || context.transforms[0]
-                    });
+                                        || context.transforms[0],
+                        layout: layoutCode || 'both'
+                    }));
                 }
             );
     }
@@ -112,9 +118,11 @@ export default class App extends React.Component {
     handleTextChange(e) {
         const input = e.target.value;
 
-        this.setState((previousState) => ({
+        this.setState(previousState => ({
             inputText: input
         }));
+
+        localforage.setItem('inputText', input);
     }
 
     handleTransformChange(e) {
@@ -125,6 +133,7 @@ export default class App extends React.Component {
             selectedTransform: this.getTransformByName(selectedTransformName)
         }));
 
+        localforage.setItem('inputText', samples[selectedTransformName]);
         localforage.setItem('transform', selectedTransformName);
     }
 
@@ -132,6 +141,8 @@ export default class App extends React.Component {
         this.setState({
             layout: layoutCode
         });
+
+        localforage.setItem('layout', layoutCode);
     }
 
     exportHtml() {
@@ -164,9 +175,13 @@ export default class App extends React.Component {
     }
 
     reset() {
-        this.setState((state) => ({
-            inputText: samples[state.selectedTransform.name]
+        const inputText = samples[this.state.selectedTransform.name];
+
+        this.setState(state => ({
+            inputText
         }));
+
+        localforage.setItem('inputText', inputText);
     }
 
     render() {
