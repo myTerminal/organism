@@ -2,6 +2,7 @@
 
 import React from 'react';
 import FileSaver from 'file-saver';
+import localforage from 'localforage';
 
 import Input from './input.jsx';
 import Output from './output.jsx';
@@ -29,9 +30,16 @@ const BBCodeParser = require('bbcode-parser');
 
 const bbcodeParser = new BBCodeParser(BBCodeParser.defaultTags());
 
+localforage.config({
+    driver: localforage.LOCALSTORAGE,
+    name: 'organism'
+});
+
 export default class App extends React.Component {
     constructor() {
         super();
+
+        const context = this;
 
         this.transforms = [
             {
@@ -76,6 +84,29 @@ export default class App extends React.Component {
             selectedTransform: this.transforms[0],
             layout: 'both'
         };
+
+        Promise
+            .all(
+                [
+                    localforage.getItem('transform')
+                ]
+            )
+            .then(
+                (
+                    [
+                        storedTransformName
+                    ]
+                ) => {
+                    context.setState({
+                        selectedTransform: context.getTransformByName(storedTransformName)
+                                        || context.transforms[0]
+                    });
+                }
+            );
+    }
+
+    getTransformByName(n) {
+        return this.transforms.filter(t => t.name === n)[0];
     }
 
     handleTextChange(e) {
@@ -91,8 +122,10 @@ export default class App extends React.Component {
 
         this.setState(() => ({
             inputText: samples[selectedTransformName],
-            selectedTransform: this.transforms.filter(t => t.name === selectedTransformName)[0]
+            selectedTransform: this.getTransformByName(selectedTransformName)
         }));
+
+        localforage.setItem('transform', selectedTransformName);
     }
 
     switchToLayout(layoutCode) {

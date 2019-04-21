@@ -1,6 +1,6 @@
 {
   "name": "organism",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "A live-preview editor for org and more",
   "main": "public/index.html",
   "scripts": {
@@ -32,6 +32,7 @@
     "bbcode-parser": "1.0.10",
     "file-saver": "2.0.0",
     "font-awesome": "4.7.0",
+    "localforage": "1.7.3",
     "npm-creole": "0.3.6",
     "org": "0.2.0",
     "react": "16.7.0",
