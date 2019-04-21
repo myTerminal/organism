@@ -101,10 +101,12 @@ export default class App extends React.Component {
                         layoutCode
                     ]
                 ) => {
+                    const transformToBeSelected = context.getTransformByName(storedTransformName)
+                                               || context.transforms[0];
+
                     context.setState(state => ({
-                        inputText: inputText || '',
-                        selectedTransform: context.getTransformByName(storedTransformName)
-                                        || context.transforms[0],
+                        inputText: inputText || samples[transformToBeSelected.name],
+                        selectedTransform: transformToBeSelected,
                         layout: layoutCode || 'both'
                     }));
                 }
