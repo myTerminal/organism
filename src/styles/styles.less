@@ -4,6 +4,17 @@
 @import '../../node_modules/ample-alerts/build/styles/ample-alerts.dark.css';
 
 @font-face {
+    font-family: OpenSans;
+    src: url('../fonts/OpenSans-Regular.ttf');
+}
+
+@font-face {
+    font-family: OpenSans;
+    font-weight: bold;
+    src: url('../fonts/OpenSans-Bold.ttf');
+}
+
+@font-face {
     font-family: RobotoMono;
     src: url('../fonts/RobotoMono-Regular.ttf');
 }
@@ -23,7 +34,7 @@ html {
         margin: 0;
         padding: 0;
         height: 100%;
-        font-family: RobotoMono;
+        font-family: OpenSans;
 
         #page {
             width: 100%;
@@ -82,6 +93,7 @@ html {
                         border: none;
                         margin: 0;
                         padding: 10px;
+                        font-family: RobotoMono;
                         font-size: 1em;
                         .transition(1s);
                     }
