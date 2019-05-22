@@ -1,6 +1,6 @@
 /* global caches fetch skipWaiting */
 
-const cacheName = '1558388814433',
+const cacheName = '1558492060567',
     origin = '/organism/';
 
 this.addEventListener(
