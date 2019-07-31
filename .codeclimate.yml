@@ -1,0 +1,4 @@
+exclude_paths:
+- "karma.conf.js"
+- "tests.bundle.js"
+- "webpack.*"
