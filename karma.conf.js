@@ -1,3 +1,5 @@
+/* global require module */
+
 const webpackConfig = require('./webpack.common.js');
 webpackConfig.devtool = 'inline-source-map';
 
